@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Registrazione</title>
+<link rel="stylesheet" th:href="@{/main.css}" />
+</head>
+<body>
+	<div id="global">
+		<h3>Registrazione</h3>
+		<form method="post" th:action="@{/registrazione}" th:object="${utente}">
+			<fieldset>
+				<legend>Registrazione</legend>
+				<p>
+					<label for="username">Username:</label>
+					<input type="text" name="username" th:field="*{username}"/><br/>
+					<span class="validationError" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span><br/>
+				</p>
+				<p>
+					<label for="email">eMail:</label>
+					<input type="text" name="email" th:field="*{email}" /><br/>
+					<span class="validationError" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span><br/>
+				</p>
+				<p>
+					<label for="password">Password:</label>
+					<input type="text" name="password" th:field="*{password}"/><br/>
+					<span class="validationError" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span><br/>
+				</p>
+				<p id="buttons">
+					<input id="reset" type="reset" value="Pulisci">
+					<input id="submit" type="submit" value="Inserisci">
+				</p>
+			</fieldset>
+		</form>
+		<div class="center"><a th:href="@{/login}">Login</a></div>
+	</div>
+</body>
+</html>
